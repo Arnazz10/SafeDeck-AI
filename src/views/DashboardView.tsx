@@ -68,41 +68,46 @@ const DashboardView: React.FC<DashboardViewProps> = ({ onSelectHazard }) => {
             </button>
           </div>
 
-          <div className="bento-card aspect-square relative overflow-hidden p-0">
+          <div className="bento-card aspect-square relative overflow-hidden p-0 group border-2 border-primary/20 shadow-2xl">
             <img 
-              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800" 
+              src="/src/assets/traffic_monitor.png" 
               alt="Sector Map" 
-              className="w-full h-full object-cover grayscale opacity-20"
+              className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             
             {/* Map Grid Overlay */}
-            <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, #00000010 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+            <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, #ffffff15 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
 
             {/* Map Markers */}
             <motion.div 
-              animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+              animate={{ scale: [1, 1.3, 1], opacity: [0.8, 1, 0.8] }}
               transition={{ repeat: Infinity, duration: 2 }}
-              className="absolute top-1/3 left-1/2 w-4 h-4 bg-primary rounded-full border-2 border-white shadow-xl" 
+              className="absolute top-1/4 left-1/3 w-6 h-6 bg-primary rounded-full border-[3px] border-white shadow-[0_0_30px_#0071e3]" 
+            />
+            <motion.div 
+              animate={{ scale: [1, 1.2, 1], opacity: [0.6, 0.9, 0.6] }}
+              transition={{ repeat: Infinity, duration: 2.5, delay: 0.5 }}
+              className="absolute bottom-1/3 right-1/4 w-4 h-4 bg-danger rounded-full border-[2px] border-white shadow-[0_0_20px_#ff3b30]" 
             />
             
-            <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/80 backdrop-blur-md rounded-2xl border border-border">
-              <p className="text-[10px] font-bold text-text-secondary uppercase tracking-widest mb-1">Current Focus</p>
-              <p className="text-sm font-bold">Lower Deck B-12</p>
+            <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/90 backdrop-blur-2xl rounded-2xl border border-white shadow-2xl">
+              <p className="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">Live Tracking</p>
+              <p className="text-sm font-extrabold text-text-primary">Highway Sector A-42 • 12 Targets</p>
             </div>
           </div>
 
           <div className="bento-card p-6 space-y-4">
             <h3 className="text-sm font-bold uppercase tracking-widest text-text-secondary">Quick Controls</h3>
             <div className="grid grid-cols-2 gap-4">
-              <button className="flex flex-col items-center justify-center p-4 rounded-2xl bg-white border border-border hover:border-primary/30 hover:scale-[1.02] transition-all group">
-                <ShieldAlert className="w-5 h-5 text-text-secondary group-hover:text-primary mb-2" />
-                <span className="text-[10px] font-bold uppercase">Alert</span>
+              <button className="flex flex-col items-center justify-center p-4 rounded-2xl bg-surface border-2 border-border hover:border-primary hover:bg-primary/5 hover:scale-[1.02] transition-all group active:scale-[0.98]">
+                <ShieldAlert className="w-6 h-6 text-text-primary group-hover:text-primary mb-2" />
+                <span className="text-[11px] font-extrabold uppercase text-text-primary">Alert</span>
               </button>
-              <button className="flex flex-col items-center justify-center p-4 rounded-2xl bg-white border border-border hover:border-primary/30 hover:scale-[1.02] transition-all group">
-                <Radio className="w-5 h-5 text-text-secondary group-hover:text-primary mb-2" />
-                <span className="text-[10px] font-bold uppercase">Radio</span>
+              <button className="flex flex-col items-center justify-center p-4 rounded-2xl bg-surface border-2 border-border hover:border-primary hover:bg-primary/5 hover:scale-[1.02] transition-all group active:scale-[0.98]">
+                <Radio className="w-6 h-6 text-text-primary group-hover:text-primary mb-2" />
+                <span className="text-[11px] font-extrabold uppercase text-text-primary">Radio</span>
               </button>
             </div>
           </div>

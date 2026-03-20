@@ -5,9 +5,10 @@ import { motion } from 'motion/react';
 interface SidebarProps {
   activeView: string;
   onViewChange: (view: string) => void;
+  onLogout?: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange }) => {
+const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange, onLogout }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'monitor', label: 'Live Monitor', icon: Radio },
@@ -52,11 +53,21 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, onViewChange }) => {
       </nav>
 
       <div className="mt-auto space-y-1 border-t border-border pt-6">
-        <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-text-secondary hover:text-text-primary hover:bg-surface transition-all">
+        <button 
+          onClick={() => onViewChange('settings')}
+          className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all ${
+            activeView === 'settings' 
+              ? 'text-primary' 
+              : 'text-text-secondary hover:text-text-primary hover:bg-surface'
+          }`}
+        >
           <Settings className="w-5 h-5" />
           <span className="text-[13px] font-semibold">Settings</span>
         </button>
-        <button className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-text-secondary hover:text-danger hover:bg-danger/5 transition-all">
+        <button 
+          onClick={onLogout}
+          className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-text-secondary hover:text-danger hover:bg-danger/5 transition-all"
+        >
           <LogOut className="w-5 h-5" />
           <span className="text-[13px] font-semibold">Logout</span>
         </button>

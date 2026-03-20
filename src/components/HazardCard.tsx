@@ -33,10 +33,10 @@ const HazardCard: React.FC<HazardCardProps> = ({ hazard, onClick }) => {
 
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between mb-1">
-          <h4 className="font-bold text-lg tracking-tight group-hover:text-primary transition-colors truncate">{hazard.title}</h4>
-          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface border border-border">
-            <AlertTriangle className={`w-3 h-3 ${isDanger ? 'text-primary' : 'text-text-secondary'}`} />
-            <span className="text-[10px] font-bold">LVL {hazard.threatLevel}</span>
+          <h4 className="font-extrabold text-xl tracking-tight group-hover:text-primary transition-colors truncate">{hazard.title}</h4>
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border-2 border-primary/20">
+            <AlertTriangle className={`w-3.5 h-3.5 ${isDanger ? 'text-primary' : 'text-text-secondary'}`} />
+            <span className="text-[11px] font-black text-primary">LVL {hazard.threatLevel}</span>
           </div>
         </div>
         <p className="text-text-secondary text-[13px] font-light line-clamp-1 mb-3">{hazard.description}</p>

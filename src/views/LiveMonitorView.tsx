@@ -8,11 +8,11 @@ const LiveMonitorView: React.FC = () => {
   useEffect(() => {
     const messages = [
       { msg: 'Neural engine initialized.', type: 'info' },
-      { msg: 'Sector 4 feed active.', type: 'info' },
-      { msg: 'Anomaly detected in B-12.', type: 'danger' },
-      { msg: 'Thermal variance nominal.', type: 'info' },
-      { msg: 'Scanning personnel IDs...', type: 'info' },
-      { msg: 'Lockdown protocol ready.', type: 'warning' },
+      { msg: 'Highway Sector A-42 feed active.', type: 'info' },
+      { msg: 'Collision risk detected in Lane 3.', type: 'danger' },
+      { msg: 'Average speed nominal.', type: 'info' },
+      { msg: 'Target license plate scanning...', type: 'info' },
+      { msg: 'Automatic braking protocol ready.', type: 'warning' },
     ];
 
     let i = 0;
@@ -50,29 +50,39 @@ const LiveMonitorView: React.FC = () => {
         <div className="lg:col-span-3 space-y-8">
           <div className="relative aspect-video bg-black rounded-[32px] overflow-hidden border border-border shadow-2xl group">
             <img 
-              src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=1200" 
+              src="/src/assets/traffic_monitor.png" 
               alt="Live Feed" 
-              className="w-full h-full object-cover opacity-40 grayscale"
+              className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-all duration-1000"
               referrerPolicy="no-referrer"
+            />
+            
+            {/* Scanning line animation */}
+            <motion.div 
+              animate={{ top: ['0%', '100%', '0%'] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+              className="absolute left-0 right-0 h-[2px] bg-primary/30 z-10 shadow-[0_0_15px_#0071e3]"
             />
             
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute top-10 left-10 flex flex-col gap-1">
-                <p className="text-[10px] font-bold text-primary uppercase tracking-widest">CAM_04_SEC_4</p>
-                <p className="text-xs font-medium text-white/40">2024-03-20 06:13:17</p>
+                <p className="text-[10px] font-bold text-primary uppercase tracking-widest">HW_A42_SEC_1</p>
+                <p className="text-xs font-medium text-white/60">2024-03-20 14:55:02</p>
               </div>
               
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-white/10 rounded-full flex items-center justify-center">
-                <div className="w-1 h-1 bg-primary rounded-full shadow-[0_0_10px_#0071e3]" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-primary/20 rounded-full flex items-center justify-center">
+                <div className="w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_15px_#0071e3]" />
               </div>
 
               <motion.div 
-                animate={{ opacity: [0.3, 0.6, 0.3] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="absolute top-[30%] left-[45%] w-40 h-56 border-2 border-white/30 rounded-2xl"
+                animate={{ scale: [1, 1.05, 1], opacity: [0.7, 0.9, 0.7] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="absolute top-[35%] left-[25%] w-48 h-32 border-2 border-primary rounded-xl overflow-hidden"
               >
-                <div className="absolute -top-8 left-0 bg-white text-text-primary text-[9px] font-bold px-3 py-1 rounded-full uppercase shadow-lg">
-                  HAZARD_DETECTED
+                <div className="absolute top-0 left-0 bg-primary text-white text-[9px] font-bold px-3 py-1 uppercase">
+                  VEHICLE_IN_LANE_3
+                </div>
+                <div className="absolute bottom-2 left-2 text-[10px] text-white font-mono bg-black/40 px-2 py-0.5 rounded">
+                   SP: 112 KM/H • CONF: 99%
                 </div>
               </motion.div>
             </div>

@@ -51,29 +51,37 @@
 }
 
 .bento-card {
-  @apply bg-surface rounded-2xl p-8 transition-all duration-500;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  @apply bg-surface rounded-2xl p-8 transition-all duration-500 border border-border;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
 }
 
 .bento-card:hover {
-  @apply scale-[1.02];
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  @apply scale-[1.01] border-primary/20;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
 .pill-button {
-  @apply px-6 py-2.5 rounded-full font-semibold transition-all duration-300 active:scale-95;
+  @apply px-6 py-2.5 rounded-full font-bold transition-all duration-300 active:scale-95 border-2 border-transparent;
 }
 
 .pill-button-primary {
-  @apply bg-primary text-white hover:bg-primary/90;
+  @apply bg-primary text-white hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20;
 }
 
 .pill-button-dark {
-  @apply bg-text-primary text-white hover:bg-text-primary/90;
+  @apply bg-text-primary text-white hover:bg-black hover:shadow-lg hover:shadow-black/20;
+}
+
+.pill-button-outline {
+  @apply bg-transparent border-border text-text-primary hover:border-primary hover:text-primary;
 }
 
 .pill-button-ghost {
-  @apply text-primary hover:underline;
+  @apply text-primary hover:bg-primary/5 font-extrabold tracking-tight;
+}
+
+.icon-button {
+  @apply p-2.5 rounded-xl bg-surface border-2 border-border text-text-secondary hover:text-primary hover:border-primary hover:bg-primary/5 transition-all active:scale-95;
 }
 
 .sticky-section {

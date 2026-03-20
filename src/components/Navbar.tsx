@@ -1,7 +1,11 @@
 import React from 'react';
 import { Bell, Search, User } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onUserClick?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onUserClick }) => {
   return (
     <header className="glass-nav ml-64 flex items-center justify-between px-8">
       <div className="flex items-center gap-4 bg-surface px-4 py-1.5 rounded-full w-96 border border-transparent focus-within:border-primary/20 transition-all">
@@ -27,7 +31,10 @@ const Navbar: React.FC = () => {
           
           <div className="h-4 w-[1px] bg-border" />
 
-          <button className="flex items-center gap-3 hover:bg-surface p-1 pr-3 rounded-full transition-all">
+          <button 
+            onClick={onUserClick}
+            className="flex items-center gap-3 hover:bg-surface p-1 pr-3 rounded-full transition-all"
+          >
             <div className="w-7 h-7 rounded-full bg-surface border border-border overflow-hidden flex items-center justify-center">
               <User className="w-4 h-4 text-text-secondary" />
             </div>

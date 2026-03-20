@@ -12,6 +12,9 @@ import DashboardView from './views/DashboardView';
 import HazardDetailView from './views/HazardDetailView';
 import LiveMonitorView from './views/LiveMonitorView';
 import MobileCompanionView from './views/MobileCompanionView';
+import SettingsView from './views/SettingsView';
+import UserView from './views/UserView';
+import LoginView from './views/LoginView';
 import { Hazard } from './types';
 
 // --- Landing Components ---
@@ -36,16 +39,16 @@ const LandingPage = ({ onEnter }: { onEnter: () => void }) => {
   return (
     <div className="bg-white text-text-primary overflow-x-hidden">
       {/* Landing Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-[100] h-[52px] flex items-center justify-between px-6 backdrop-blur-xl bg-white/80 border-bottom border-border">
+    <nav className="fixed top-0 left-0 right-0 z-[100] h-[52px] flex items-center justify-between px-6 backdrop-blur-xl bg-white/80 border-b border-border">
         <div className="flex items-center gap-2">
           <ShieldCheck className="text-primary w-5 h-5" />
           <span className="font-bold text-lg tracking-tight">SafeDeck<span className="text-primary">AI</span></span>
         </div>
         <button 
           onClick={onEnter}
-          className="pill-button pill-button-dark text-[12px]"
+          className="pill-button pill-button-dark text-[12px] font-bold"
         >
-          Enter Dashboard
+          Operator Login
         </button>
       </nav>
 
@@ -56,15 +59,15 @@ const LandingPage = ({ onEnter }: { onEnter: () => void }) => {
         <div className="max-w-5xl text-center space-y-8">
           <Reveal>
             <h1 className="hero-title">
-              Safety. <br />
-              <span className="text-primary">Redefined.</span>
+              Automotive Safety. <br />
+              <span className="text-primary">AI-Driven.</span>
             </h1>
           </Reveal>
           
           <Reveal delay={0.2}>
             <p className="text-text-secondary text-xl md:text-2xl font-light max-w-2xl mx-auto leading-relaxed">
-              SafeDeckAI uses advanced neural networks to detect, analyze, and neutralize hazards in real-time. 
-              The future of safety is here.
+              SafeDeckAI uses advanced neural networks to detect car accidents, technical failures, and road hazards in real-time. 
+              The future of vehicle safety is here.
             </p>
           </Reveal>
 
@@ -88,9 +91,9 @@ const LandingPage = ({ onEnter }: { onEnter: () => void }) => {
           <div className="mt-24 relative max-w-6xl mx-auto px-6">
             <div className="rounded-[32px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border border-border bg-surface aspect-[16/9]">
               <img 
-                src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&q=80&w=1200" 
-                alt="Dashboard Preview" 
-                className="w-full h-full object-cover grayscale opacity-80"
+                src="/src/assets/car_hazard_detection.png" 
+                alt="Car Hazard Detection" 
+                className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -107,8 +110,8 @@ const LandingPage = ({ onEnter }: { onEnter: () => void }) => {
       <section className="py-32 px-6 max-w-7xl mx-auto">
         <Reveal>
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Engineered for precision.</h2>
-            <p className="text-text-secondary text-xl font-light">Every detail matters when safety is the priority.</p>
+            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Mastering the road.</h2>
+            <p className="text-text-secondary text-xl font-light">Advanced AI for the next generation of automotive security.</p>
           </div>
         </Reveal>
 
@@ -120,28 +123,34 @@ const LandingPage = ({ onEnter }: { onEnter: () => void }) => {
                 Our custom-built AI processes thousands of data points per second to identify anomalies before they become hazards.
               </p>
             </div>
-            <div className="absolute bottom-0 right-0 w-2/3 h-2/3 opacity-20 group-hover:opacity-40 transition-opacity">
-              <Activity className="w-full h-full text-primary" />
+            <div className="absolute bottom-0 right-0 w-2/3 h-2/3 opacity-100 group-hover:scale-105 transition-transform duration-1000">
+              <img src="/src/assets/car_neural_net.png" className="w-full h-full object-cover rounded-tl-[60px]" />
             </div>
           </div>
           
-          <div className="md:col-span-4 bento-card bg-primary text-white flex flex-col justify-end">
-            <ShieldAlert className="w-12 h-12 mb-6" />
-            <h3 className="text-2xl font-bold mb-2">Instant Response.</h3>
-            <p className="opacity-80 font-light">
-              Automated protocols trigger within milliseconds of detection.
-            </p>
+          <div className="md:col-span-4 bento-card bg-primary text-white flex flex-col justify-end relative overflow-hidden group">
+            <img src="/src/assets/car_dashboard.png" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" />
+            <div className="relative z-10">
+              <ShieldAlert className="w-12 h-12 mb-6" />
+              <h3 className="text-2xl font-bold mb-2">Instant Response.</h3>
+              <p className="opacity-80 font-light">
+                Automated protocols trigger within milliseconds of detection.
+              </p>
+            </div>
           </div>
 
-          <div className="md:col-span-4 bento-card flex flex-col justify-between">
-            <div className="w-12 h-12 rounded-2xl bg-surface border border-border flex items-center justify-center">
-              <Radio className="w-6 h-6 text-primary" />
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-2">Live Telemetry.</h3>
-              <p className="text-text-secondary text-sm font-light">
-                Continuous feedback loop from every sensor in the network.
-              </p>
+          <div className="md:col-span-4 bento-card flex flex-col justify-between relative overflow-hidden group h-full">
+            <img src="/src/assets/traffic_monitor.png" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+            <div className="relative z-10 flex flex-col justify-between h-full">
+              <div className="w-12 h-12 rounded-2xl bg-surface border border-border flex items-center justify-center">
+                <Radio className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Live Telemetry.</h3>
+                <p className="text-text-secondary text-sm font-light">
+                  Continuous feedback loop from every sensor in the network.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -152,8 +161,8 @@ const LandingPage = ({ onEnter }: { onEnter: () => void }) => {
                 Stay connected in the field with our mobile interface. Real-time alerts and checklists for rapid resolution.
               </p>
             </div>
-            <div className="hidden md:block w-48 h-48 bg-white rounded-3xl shadow-xl border border-border flex items-center justify-center">
-              <Smartphone className="w-20 h-20 text-primary" />
+            <div className="hidden md:block w-48 h-48 bg-white rounded-3xl shadow-xl border border-border flex items-center justify-center overflow-hidden">
+              <img src="/src/assets/companion_app.png" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -213,9 +222,24 @@ const LandingPage = ({ onEnter }: { onEnter: () => void }) => {
 // --- Main App Component ---
 
 export default function App() {
-  const [showApp, setShowApp] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return sessionStorage.getItem('operator_auth') === 'true';
+  });
+  const [showLogin, setShowLogin] = useState(false);
   const [activeView, setActiveView] = useState('dashboard');
   const [selectedHazard, setSelectedHazard] = useState<Hazard | null>(null);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    sessionStorage.setItem('operator_auth', 'true');
+    setShowLogin(false);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('operator_auth');
+    setActiveView('dashboard');
+  };
 
   const handleSelectHazard = (hazard: Hazard) => {
     setSelectedHazard(hazard);
@@ -236,6 +260,10 @@ export default function App() {
         return <LiveMonitorView />;
       case 'mobile':
         return <MobileCompanionView />;
+      case 'settings':
+        return <SettingsView />;
+      case 'user':
+        return <UserView />;
       case 'hazard-detail':
         return selectedHazard ? (
           <HazardDetailView hazard={selectedHazard} onBack={handleBackToDashboard} />
@@ -249,28 +277,40 @@ export default function App() {
 
   return (
     <AnimatePresence mode="wait">
-      {!showApp ? (
-        <motion.div
-          key="landing"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.5 }}
-        >
-          <LandingPage onEnter={() => setShowApp(true)} />
-        </motion.div>
+      {!isAuthenticated ? (
+        !showLogin ? (
+          <motion.div
+            key="landing"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <LandingPage onEnter={() => setShowLogin(true)} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="login"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.5 }}
+          >
+            <LoginView onLogin={handleLogin} />
+          </motion.div>
+        )
       ) : (
         <motion.div 
           key="app"
-          initial={{ opacity: 0, scale: 0.98 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="min-h-screen bg-white text-text-primary flex"
         >
-          <Sidebar activeView={activeView} onViewChange={setActiveView} />
+          <Sidebar activeView={activeView} onViewChange={setActiveView} onLogout={handleLogout} />
           
           <div className="flex-1 flex flex-col min-w-0">
-            <Navbar />
+            <Navbar onUserClick={() => setActiveView('user')} />
             
             <main className="flex-1 ml-64 pt-[52px] overflow-y-auto">
               <AnimatePresence mode="wait">

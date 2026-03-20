@@ -150,10 +150,10 @@ const HazardDetailView: React.FC<HazardDetailViewProps> = ({ hazard, onBack }) =
           </div>
 
           <div className="flex gap-4 pt-6">
-            <button className="flex-1 pill-button pill-button-primary py-4 text-sm">
-              Initiate Protocol
+            <button className="flex-1 pill-button pill-button-primary py-4 text-sm shadow-2xl">
+              Initiate Response Protocol
             </button>
-            <button className="flex-1 pill-button bg-surface text-text-primary py-4 text-sm border border-border hover:bg-border">
+            <button className="flex-1 pill-button bg-white text-text-primary py-4 text-sm border-2 border-border hover:border-black active:bg-surface transition-all font-extrabold">
               Dismiss Alert
             </button>
           </div>

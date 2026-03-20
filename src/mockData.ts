@@ -9,7 +9,7 @@ export const MOCK_HAZARDS: Hazard[] = [
     timestamp: '2024-03-20T08:45:00Z',
     status: 'ACTIVE',
     threatLevel: 5,
-    imageUrl: 'https://images.unsplash.com/photo-1486497395402-7407a1ba922c?auto=format&fit=crop&q=80&w=800',
+    imageUrl: '/src/assets/car_dashboard.png',
     assignedTo: ['Sarah Jenkins', 'Mike Ross'],
     steps: [
       'Engage emergency electronic parking brake',
@@ -31,7 +31,7 @@ export const MOCK_HAZARDS: Hazard[] = [
     timestamp: '2024-03-20T07:30:00Z',
     status: 'RESOLVED',
     threatLevel: 2,
-    imageUrl: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=800',
+    imageUrl: '/src/assets/car_hazard_detection.png',
     assignedTo: ['ADAS System'],
     steps: [
       'Identify object via vision sensor',
@@ -53,7 +53,7 @@ export const MOCK_HAZARDS: Hazard[] = [
     timestamp: '2024-03-20T09:12:00Z',
     status: 'ACTIVE',
     threatLevel: 4,
-    imageUrl: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=800',
+    imageUrl: '/src/assets/car_neural_net.png',
     assignedTo: ['Alex Chen'],
     steps: [
       'Isolate cell group 7 from power grid',
