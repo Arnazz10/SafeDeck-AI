@@ -1,0 +1,7 @@
+{
+  "name": "SafeDeckAI",
+  "description": "Real-Time Hazard Detection System with high-end minimal dashboard.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

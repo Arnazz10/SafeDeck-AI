@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&family=Inter:wght@300;400;500;600;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-background: #ffffff;
+  --color-surface: #f5f5f7;
+  --color-primary: #0071e3;
+  --color-text-primary: #0a0a0a;
+  --color-text-secondary: #86868b;
+  --color-border: rgba(0, 0, 0, 0.08);
+
+  --radius-2xl: 20px;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text-primary antialiased selection:bg-primary/20;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight font-extrabold;
+  }
+}
+
+.glass-nav {
+  @apply fixed top-0 left-0 right-0 z-50 h-[52px] flex items-center px-6;
+  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-title {
+  font-size: clamp(5rem, 10vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card {
+  @apply bg-surface rounded-2xl p-8 transition-all duration-500;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.bento-card:hover {
+  @apply scale-[1.02];
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.pill-button {
+  @apply px-6 py-2.5 rounded-full font-semibold transition-all duration-300 active:scale-95;
+}
+
+.pill-button-primary {
+  @apply bg-primary text-white hover:bg-primary/90;
+}
+
+.pill-button-dark {
+  @apply bg-text-primary text-white hover:bg-text-primary/90;
+}
+
+.pill-button-ghost {
+  @apply text-primary hover:underline;
+}
+
+.sticky-section {
+  @apply sticky top-0 h-screen flex items-center bg-white;
+}
